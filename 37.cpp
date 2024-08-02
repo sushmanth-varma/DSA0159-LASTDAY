@@ -7,28 +7,28 @@ private:
     double imag;
 
 public:
-    Complex(double r = 0, double i = 0) : real(r), imag(i) {}
+    // Constructor
+    Complex(double r, double i) : real(r), imag(i) {}
 
-    Complex operator-(const Complex& other) const {
-        return Complex(real - other.real, imag - other.imag);
+    // Overload the - operator
+    Complex operator-(const Complex &c) const {
+        return Complex(real - c.real, imag - c.imag);
     }
 
+    // Function to display complex number
     void display() const {
         cout << real << " + " << imag << "i" << endl;
     }
 };
 
 int main() {
-    Complex c1(4.3, 5.8), c2(2.4, 3.7);
-    Complex c3 = c1 - c2;
+    Complex num1(4.5, 3.2);
+    Complex num2(1.5, 1.2);
 
-    cout << "Complex number 1: ";
-    c1.display();
-    cout << "Complex number 2: ";
-    c2.display();
+    Complex result = num1 - num2;
+
     cout << "Result of subtraction: ";
-    c3.display();
+    result.display();
 
     return 0;
 }
-

@@ -2,14 +2,21 @@
 using namespace std;
 
 int main() {
-    int num1, num2;
+    int num1, num2, gcd;
 
     cout << "Enter two integers: ";
     cin >> num1 >> num2;
 
-    int greater = (num1 > num2) ? num1 : num2;
-    cout << "The greater number is: " << greater << endl;
+    int a = num1;
+    int b = num2;
+
+    do {
+        gcd = b;
+        b = a % b;
+        a = gcd;
+    } while (b != 0);
+
+    cout << "The GCD of " << num1 << " and " << num2 << " is: " << gcd << endl;
 
     return 0;
 }
-

@@ -1,41 +1,19 @@
 #include <iostream>
 using namespace std;
-
-int main() {
-    int rows, cols;
-    cout << "Enter the number of rows and columns of the matrices: ";
-    cin >> rows >> cols;
-
-    int matrix1[rows][cols], matrix2[rows][cols], sum[rows][cols];
-
-    cout << "Enter elements of the first matrix: " << endl;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            cin >> matrix1[i][j];
-        }
-    }
-
-    cout << "Enter elements of the second matrix: " << endl;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            cin >> matrix2[i][j];
-        }
-    }
-
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            sum[i][j] = matrix1[i][j] + matrix2[i][j];
-        }
-    }
-
-    cout << "Sum of the matrices: " << endl;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            cout << sum[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    return 0;
+void modifyValues(int *x, int *y) {
+    *x = 20;
+    *y = 30;
+    cout << "Inside modifyValues: x = " << *x << ", y = " << *y << endl;
 }
 
+int main() {
+    int x = 10, y = 15;
+    
+    cout << "Before modifyValues: x = " << x << ", y = " << y << endl;
+    
+    modifyValues(&x, &y);
+    
+    cout << "After modifyValues: x = " << x << ", y = " << y << endl;
+    
+    return 0;
+}

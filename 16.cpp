@@ -1,24 +1,37 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    int numerator, denominator, result;
+class Rectangle {
+private:
+    double length;
+    double width;
 
-    cout << "Enter numerator: ";
-    cin >> numerator;
-    cout << "Enter denominator: ";
-    cin >> denominator;
-
-    try {
-        if (denominator == 0) {
-            throw "Division by zero error!";
-        }
-        result = numerator / denominator;
-        cout << "Result: " << result << endl;
-    } catch (const char* msg) {
-        cerr << msg << endl;
+public:
+    // Constructor
+    Rectangle(double l, double w) : length(l), width(w) {
+        cout << "Rectangle object created." << endl;
     }
+
+    // Destructor
+    ~Rectangle() {
+        cout << "Rectangle object destroyed." << endl;
+    }
+
+    // Function to calculate area
+    double area() const {
+        return length * width;
+    }
+
+    // Display function
+    void display() const {
+        cout << "Length: " << length << ", Width: " << width << endl;
+        cout << "Area: " << area() << endl;
+    }
+};
+
+int main() {
+    Rectangle rect(5.0, 3.0);
+    rect.display();
 
     return 0;
 }
-

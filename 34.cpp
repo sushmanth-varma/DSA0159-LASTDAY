@@ -2,34 +2,48 @@
 #include <cmath>
 using namespace std;
 
+// Abstract base class Shape
 class Shape {
 protected:
-    double height;
-    double width;
+    double area;
 
 public:
-    virtual double area() = 0; // Pure virtual function
+    // Pure virtual function
+    virtual void calculateArea() = 0;
+
+    // Function to display the area
+    void displayArea() const {
+        cout << "Area: " << area << endl;
+    }
 };
 
+// Derived class Square
 class Square : public Shape {
-public:
-    Square(double length) {
-        height = width = length;
-    }
+private:
+    double length;
 
-    double area() override {
-        return height * width;
+public:
+    // Constructor
+    Square(double l) : length(l) {}
+
+    // Implement the pure virtual function
+    void calculateArea() override {
+        area = length * length;
     }
 };
 
+// Derived class Circle
 class Circle : public Shape {
-public:
-    Circle(double r) {
-        height = width = r;
-    }
+private:
+    double radius;
 
-    double area() override {
-        return M_PI * height * height;
+public:
+    // Constructor
+    Circle(double r) : radius(r) {}
+
+    // Implement the pure virtual function
+    void calculateArea() override {
+        area = M_PI * radius * radius;
     }
 };
 
@@ -38,14 +52,19 @@ int main() {
 
     cout << "Enter the radius of the circle: ";
     cin >> radius;
-    Circle circ(radius);
-    cout << "Area of circle: " << circ.area() << endl;
-
     cout << "Enter the length of the square: ";
     cin >> length;
-    Square sq(length);
-    cout << "Area of square: " << sq.area() << endl;
+
+    Circle circle(radius);
+    Square square(length);
+
+    circle.calculateArea();
+    cout << "Area of circle: ";
+    circle.displayArea();
+
+    square.calculateArea();
+    cout << "Area of square: ";
+    square.displayArea();
 
     return 0;
 }
-

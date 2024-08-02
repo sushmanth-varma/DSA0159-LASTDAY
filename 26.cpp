@@ -1,36 +1,32 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-void deleteElement(int arr[], int& size, int position) {
-    if (position >= size || position < 0) {
-        cout << "Invalid position!" << endl;
-        return;
+// Function to count the number of words in a string
+int countWords(const string &str) {
+    int count = 0;
+    bool inWord = false;
+
+    for (char c : str) {
+        if (isspace(c)) {
+            inWord = false;
+        } else if (!inWord) {
+            inWord = true;
+            count++;
+        }
     }
 
-    for (int i = position; i < size - 1; ++i) {
-        arr[i] = arr[i + 1];
-    }
-    --size;
+    return count;
 }
 
 int main() {
-    int arr[100], size, position;
-
-    cout << "Enter the size of the array: ";
-    cin >> size;
-
-    cout << "Enter the elements of the array: ";
-    for (int i = 0; i < size; ++i) {
-        cin >> arr[i];
-    }
-
-    cout << "Enter the position of the element to delete: ";
-    cin >> position;
-
-    deleteElement(arr, size, position);
-
-    cout << "Array after deletion: ";
-    for (int i = 0; i < size; ++i) {
-        cout << arr[i] << " ";
-   
-
+    string text;
+    
+    cout << "Enter a string: ";
+    getline(cin, text);
+    
+    int wordCount = countWords(text);
+    cout << "Number of words: " << wordCount << endl;
+    
+    return 0;
+}

@@ -2,16 +2,15 @@
 using namespace std;
 
 int main() {
-    char arr[] = "Hello, world!";
+    char arr[] = "Hello, World!";
     char* ptr = arr;
 
-    cout << "Array values: ";
+    cout << "Array values using pointer: ";
     while (*ptr != '\0') {
         cout << *ptr;
-        ++ptr;
+        ptr++;
     }
     cout << endl;
 
     return 0;
 }
-

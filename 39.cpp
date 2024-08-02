@@ -1,25 +1,28 @@
 #include <iostream>
 using namespace std;
 
-double calculateInterest(double principal, double rate, int time) {
-    return (principal * rate * time) / 100;
+// Function to calculate simple interest
+double calculateSimpleInterest(double principal, int years, bool isSeniorCitizen) {
+    double rate = isSeniorCitizen ? 12.0 : 10.0;
+    return (principal * rate * years) / 100;
 }
 
 int main() {
     double principal;
-    int time, age;
+    int years;
+    char senior;
+
     cout << "Enter the principal amount: ";
     cin >> principal;
-    cout << "Enter the time (in years): ";
-    cin >> time;
-    cout << "Enter the age of the customer: ";
-    cin >> age;
+    cout << "Enter the number of years: ";
+    cin >> years;
+    cout << "Is the customer a senior citizen? (y/n): ";
+    cin >> senior;
 
-    double rate = (age >= 60) ? 12 : 10;
-    double interest = calculateInterest(principal, rate, time);
+    bool isSeniorCitizen = (senior == 'y' || senior == 'Y');
 
-    cout << "Simple Interest: " << interest << endl;
+    double interest = calculateSimpleInterest(principal, years, isSeniorCitizen);
+    cout << "Simple Interest: $" << interest << endl;
 
     return 0;
 }
-

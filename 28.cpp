@@ -1,23 +1,29 @@
 #include <iostream>
 using namespace std;
 
-class Sample {
+class Car {
 private:
-    int data;
+    string brand;
+    int year;
 
 public:
-    Sample(int d) : data(d) {}
+    // Constructor
+    Car(string b, int y) : brand(b), year(y) {}
 
+    // Function to display car attributes
     void display() const {
-        cout << "Data: " << data << endl;
+        cout << "Brand: " << brand << ", Year: " << year << endl;
     }
 };
 
 int main() {
-    Sample* ptr = new Sample(100);
-    ptr->display();
-    delete ptr;
+    Car car1("Toyota", 2020);
+
+    // Create a pointer to the object
+    Car* carPtr = &car1;
+
+    // Use the pointer to access the object's attributes
+    carPtr->display();
 
     return 0;
 }
-

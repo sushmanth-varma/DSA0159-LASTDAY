@@ -2,33 +2,29 @@
 using namespace std;
 
 int main() {
-    int rows, cols;
-    cout << "Enter the number of rows and columns (must be same for square matrix): ";
-    cin >> rows >> cols;
+    int n;
 
-    if (rows != cols) {
-        cout << "Not a square matrix!" << endl;
-        return 1;
-    }
+    cout << "Enter the size of the square matrix: ";
+    cin >> n;
 
-    int matrix[rows][cols];
+    int matrix[n][n];
 
-    cout << "Enter the elements of the matrix:" << endl;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
+    cout << "Enter elements of the matrix:\n";
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
             cin >> matrix[i][j];
         }
     }
 
-    int primarySum = 0, secondarySum = 0;
-    for (int i = 0; i < rows; ++i) {
-        primarySum += matrix[i][i];
-        secondarySum += matrix[i][rows - i - 1];
+    int mainDiagonalSum = 0, secondaryDiagonalSum = 0;
+
+    for (int i = 0; i < n; ++i) {
+        mainDiagonalSum += matrix[i][i];
+        secondaryDiagonalSum += matrix[i][n - 1 - i];
     }
 
-    cout << "Sum of primary diagonal: " << primarySum << endl;
-    cout << "Sum of secondary diagonal: " << secondarySum << endl;
+    cout << "Sum of main diagonal: " << mainDiagonalSum << endl;
+    cout << "Sum of secondary diagonal: " << secondaryDiagonalSum << endl;
 
     return 0;
 }
-

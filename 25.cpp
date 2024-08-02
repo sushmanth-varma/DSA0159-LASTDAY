@@ -1,48 +1,36 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Employee {
-protected:
-    string name;
-    int id;
-    double salary;
+int main() {
+    int n, pos;
 
-public:
-    Employee(string n, int i, double s) : name(n), id(i), salary(s) {}
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
 
-    virtual void display() const {
-        cout << "Name: " << name << endl;
-        cout << "ID: " << id << endl;
-        cout << "Salary: " << salary << endl;
+    int arr[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
     }
-};
 
-class Manager : public Employee {
-private:
-    string department;
-    double bonus;
+    cout << "Enter the position of the element to delete (1-based index): ";
+    cin >> pos;
 
-public:
-    Manager(string n, int i, double s, string d, double b)
-        : Employee(n, i, s), department(d), bonus(b) {}
+    if (pos < 1 || pos > n) {
+        cout << "Invalid position!" << endl;
+    } else {
+        // Shift elements to the left to delete the element
+        for (int i = pos - 1; i < n - 1; ++i) {
+            arr[i] = arr[i + 1];
+        }
+        n--;
 
-    void display() const override {
-        Employee::display();
-        cout << "Department: " << department << endl;
-        cout << "Bonus: " << bonus << endl;
+        cout << "Array after deletion:\n";
+        for (int i = 0; i < n; ++i) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
     }
-};
 
-class Engineer : public Employee {
-private:
-    string specialty;
-    int hours;
-
-public:
-    Engineer(string n, int i, double s, string sp, int h)
-        : Employee(n, i, s), specialty(sp), hours(h) {}
-
-    void display() const override {
-        Employee
-
+    return 0;
+}

@@ -2,33 +2,33 @@
 using namespace std;
 
 int main() {
-    int rows, cols;
-    cout << "Enter the number of rows and columns (must be same for square matrix): ";
-    cin >> rows >> cols;
+    const int totalSubjects = 4;
+    double marks[totalSubjects];
+    double total = 0;
 
-    if (rows != cols) {
-        cout << "Not a square matrix!" << endl;
-        return 1;
+    cout << "Enter the marks for " << totalSubjects << " subjects: ";
+    for (int i = 0; i < totalSubjects; ++i) {
+        cin >> marks[i];
+        total += marks[i];
     }
 
-    int matrix[rows][cols];
+    double aggregate = total / totalSubjects;
 
-    cout << "Enter the elements of the matrix:" << endl;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            cin >> matrix[i][j];
-        }
+    cout << "Total Marks: " << total << endl;
+    cout << "Aggregate: " << aggregate << "%" << endl;
+
+    cout << "Grade: ";
+    if (aggregate > 75) {
+        cout << "Distinction" << endl;
+    } else if (aggregate >= 60) {
+        cout << "First Division" << endl;
+    } else if (aggregate >= 50) {
+        cout << "Second Division" << endl;
+    } else if (aggregate >= 40) {
+        cout << "Third Division" << endl;
+    } else {
+        cout << "Fail" << endl;
     }
-
-    int primarySum = 0, secondarySum = 0;
-    for (int i = 0; i < rows; ++i) {
-        primarySum += matrix[i][i];
-        secondarySum += matrix[i][rows - i - 1];
-    }
-
-    cout << "Sum of primary diagonal: " << primarySum << endl;
-    cout << "Sum of secondary diagonal: " << secondarySum << endl;
 
     return 0;
 }
-

@@ -4,19 +4,18 @@ using namespace std;
 
 int main() {
     try {
-        int num;
-        cout << "Enter a positive number: ";
-        cin >> num;
+        int choice;
+        cout << "Enter 1 to throw a standard exception: ";
+        cin >> choice;
 
-        if (num < 0) {
-            throw invalid_argument("Negative number entered");
+        if (choice == 1) {
+            throw runtime_error("Standard exception occurred");
+        } else {
+            cout << "No exception thrown." << endl;
         }
-
-        cout << "You entered: " << num << endl;
-    } catch (const invalid_argument& e) {
-        cout << "Exception: " << e.what() << endl;
+    } catch (const exception &e) {
+        cout << "Caught a standard exception: " << e.what() << endl;
     }
 
     return 0;
 }
-

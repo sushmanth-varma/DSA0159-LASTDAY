@@ -1,24 +1,17 @@
 #include <iostream>
 using namespace std;
-
-int main() {
-    int n;
-    cout << "Enter the size of the array: ";
-    cin >> n;
-
-    int arr[n];
-    cout << "Enter the elements of the array: ";
-    for (int i = 0; i < n; ++i) {
-        cin >> arr[i];
-    }
-
-    int sum = 0;
-    for (int i = 0; i < n; ++i) {
-        sum += arr[i];
-    }
-
-    cout << "Sum of elements: " << sum << endl;
-
-    return 0;
+double celsiusToFahrenheit(double celsius) {
+    return (celsius * 9.0 / 5.0) + 32.0;
 }
 
+int main() {
+    double celsius;
+    
+    cout << "Enter temperature in Celsius: ";
+    cin >> celsius;
+    
+    double fahrenheit = celsiusToFahrenheit(celsius);
+    cout << "Temperature in Fahrenheit: " << fahrenheit << "°F" << endl;
+    
+    return 0;
+}

@@ -1,55 +1,72 @@
 #include <iostream>
+#include <cmath>  // Include for sqrt()
 using namespace std;
 
+// Base class Shape
 class Shape {
 protected:
     double height;
     double width;
 
 public:
+    // Constructor
     Shape(double h, double w) : height(h), width(w) {}
 
-    virtual double area() = 0;
-    virtual double perimeter() = 0;
+    // Virtual functions for area and perimeter
+    virtual double area() const = 0;
+    virtual double perimeter() const = 0;
 };
 
+// Derived class Rectangle
 class Rectangle : public Shape {
 public:
+    // Constructor
     Rectangle(double h, double w) : Shape(h, w) {}
 
-    double area() override {
+    // Implement area and perimeter functions
+    double area() const override {
         return height * width;
     }
 
-    double perimeter() override {
+    double perimeter() const override {
         return 2 * (height + width);
     }
 };
 
+// Derived class Triangle
 class Triangle : public Shape {
 public:
-    Triangle(double b, double h) : Shape(h, b) {}
+    // Constructor
+    Triangle(double h, double w) : Shape(h, w) {}
 
-    double area() override {
-        return 0.5 * height * width;
+    // Implement area and perimeter functions
+    double area() const override {
+        return (height * width) / 2;
     }
 
-    double perimeter() override {
-        // Assuming it's an equilateral triangle
-        return 3 * width;
+    // Assumes a right-angled triangle with 'height' and 'width' as the perpendicular sides
+    double perimeter() const override {
+        double hypotenuse = sqrt((height * height) + (width * width));
+        return height + width + hypotenuse;
     }
 };
 
 int main() {
-    Rectangle rect(10, 20);
-    Triangle tri(10, 20);
+    double height, width;
 
-    cout << "Rectangle Area: " << rect.area() << endl;
-    cout << "Rectangle Perimeter: " << rect.perimeter() << endl;
+    cout << "Enter the height and width of the rectangle: ";
+    cin >> height >> width;
+    Rectangle rectangle(height, width);
 
-    cout << "Triangle Area: " << tri.area() << endl;
-    cout << "Triangle Perimeter: " << tri.perimeter() << endl;
+    cout << "Area of Rectangle: " << rectangle.area() << endl;
+    cout << "Perimeter of Rectangle: " << rectangle.perimeter() << endl;
+
+    cout << "Enter the base and height of the triangle (assumed right-angled): ";
+    cin >> height >> width;
+    Triangle triangle(height, width);
+
+    cout << "Area of Triangle: " << triangle.area() << endl;
+    cout << "Perimeter of Triangle: " << triangle.perimeter() << endl;
 
     return 0;
 }
-
